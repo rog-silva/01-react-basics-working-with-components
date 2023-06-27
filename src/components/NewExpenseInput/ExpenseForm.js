@@ -7,7 +7,7 @@ const ExpenseForm = (props) => {
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
 
-  // you can have more than one State per component but exist an alternative
+  // you can have more than one State per component but exist an alternative passing an object to useState
   // but the diference is you have to update the 3 useStates, not just 1, but is more often the single useState
 
   // const [userInput, setUserInput] = useState({
@@ -15,36 +15,34 @@ const ExpenseForm = (props) => {
   //   enteredAmount: "",
   //   enteredDate: "",
   // });
+  //
+  // In the case of using just 1 useState, we should update the 3 ChangeHandler like this:
+  //
+  // ↓ This is not the convention for setUserInput, we should never call it like this ↓
+  // const titleChangeHandler = (event) => {
+  //   setUserInput({
+  //   ...userInput,
+  //   enteredTitle: event.target.value,
+  // });
+  // ↑ This is not the convention for setUserInput, we should never call it like this ↑
+  //
+  // ↓ We should call it and pass in a function to that function: ↓
+  // const titleChangeHandler = (event) => {
+  //   setUserInput((prevState) => {
+  //     return { ...prevState, eventTitle: event.target.value };
+  // });
+  // ↑ If our state update depends on the previous state, we should call it like this ↑
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    // console.log(event.target.value);
-    // This is not the convention for setUserInput
-    // setUserInput({
-    //   ...userInput,
-    //   enteredTitle: event.target.value,
-    // })
-    // setUserInput(event.target.value);
-    // console.log(event.target.value);
-    // setUserInput((prevState) => {
-    //   return { ...prevState, eventTitle: event.target.value };
-    // });
   };
 
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-
-    // setUserInput((prevState) => {
-    //   return { ...prevState, eventAmount: event.target.value };
-    // });
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-
-    // setUserInput((prevState) => {
-    //   return { ...prevState, eventDate: event.target.value };
-    // });
   };
 
   const submitHander = (event) => {

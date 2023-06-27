@@ -8,7 +8,7 @@ const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
-    setTitle("updated");
+    setTitle("updated, ExpenseItem.js L11");
     console.log(title);
   };
 
