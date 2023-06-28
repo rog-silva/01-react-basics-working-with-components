@@ -45,11 +45,27 @@ const ExpenseForm = (props) => {
     setEnteredDate(event.target.value);
   };
 
+  // Also if we don't want to have this 3 ChangeHandler functions, we can create only 1 ChangeHandler
+
+  // const inputChangeHandler = (id, value) => {
+  //   if (id === "title") {
+  //     setEnteredTitle(value);
+  //   } else if (id === "date") {
+  //     setEnteredDate(value);
+  //   } else {
+  //     setEnteredAmount(value);
+  //   }
+  // };
+
+  // and the "onChange={titleChangeHandler}" from every ChangeHandler will change to this:
+  // "onChange={(event) => inputChangeHandler("title", event.target.value)}"
+  // "title" is the id from the inputChangeHandler function... has to be "date" or "amount" in the other onChange
+
   const submitHander = (event) => {
     event.preventDefault();
 
     const expenseData = {
-      titel: enteredTitle,
+      title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
@@ -93,6 +109,7 @@ const ExpenseForm = (props) => {
         </div>
         <div className="new-expense__actions">
           <button type="submit">Add Expense</button>
+          {/* if we add the listener onClick to the button, the page will reload */}
         </div>
       </div>
     </form>
