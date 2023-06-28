@@ -15,6 +15,7 @@ const NewExpense = (props) => {
   return (
     <div className="new-expense">
       <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      {/* "onSaveExpenseData" could have any name, just for follow the convention start with "on" */}
     </div>
   );
 };
